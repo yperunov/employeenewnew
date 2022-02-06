@@ -6,6 +6,9 @@ public class Employee {
     private final String firstName;
     private final String lastName;
 
+    private int salary;
+    private int depId;
+
     public Employee(String firstName, String lastName) {
 
         this.firstName = firstName;
