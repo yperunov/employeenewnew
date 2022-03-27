@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 public interface EmployeeServiceMaps {
-    String addEmployee(String firstName, String lastName);
+    String addEmployee(String firstName, String lastName, int salary, int departmentID);
 
     String removeEmployee(String firstName, String lastName);
 

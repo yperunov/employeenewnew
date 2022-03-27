@@ -13,9 +13,9 @@ public class EmployeeServiceMapsImpl implements EmployeeServiceMaps {
     private Map<String,Employee> employees = new HashMap<>();//мапа сотрудников на основе уникальных идентификаторов
 
     @Override
-    public String addEmployee(String firstName, String lastName) {
+    public String addEmployee(String firstName, String lastName, int salary, int departmentId) {
 
-        Employee addingEmployee = new Employee(firstName, lastName);
+        Employee addingEmployee = new Employee(firstName, lastName, salary, departmentId);
 
         String keyForMap = firstName + lastName;
 
