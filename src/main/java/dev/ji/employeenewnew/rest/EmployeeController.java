@@ -1,7 +1,7 @@
 package dev.ji.employeenewnew.rest;
 
 import dev.ji.employeenewnew.model.Employee;
-import dev.ji.employeenewnew.service.EmployeeServiceMaps;
+import dev.ji.employeenewnew.service.EmployeeServiceStream;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,9 +13,9 @@ import java.util.Collection;
 @RequestMapping("/employee")
 public class EmployeeController {
 
-    private EmployeeServiceMaps employeeService;
+    private final EmployeeServiceStream employeeService;
 
-    public EmployeeController(EmployeeServiceMaps employeeService) {
+    public EmployeeController(EmployeeServiceStream employeeService) {
         this.employeeService = employeeService;
     }
 

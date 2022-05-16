@@ -11,18 +11,18 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class EmployeeDeptServiceImpl implements EmployeeDeptService {
+public class EmployeeDeptServiceStreamImpl implements EmployeeDeptServiceStream {
 
-    private final EmployeeServiceMaps employeeServiceMaps;
+    private final EmployeeServiceStream employeeServiceStream;
 
-    public EmployeeDeptServiceImpl(EmployeeServiceMaps employeeServiceMaps) {
-        this.employeeServiceMaps = employeeServiceMaps;
+    public EmployeeDeptServiceStreamImpl(EmployeeServiceStream employeeServiceStream) {
+        this.employeeServiceStream = employeeServiceStream;
     }
 
 
     @Override
     public Employee getEmployeeWithMinimalSalaryByDept(int departmentId) {
-        return employeeServiceMaps.getAllEmployees().stream()
+        return employeeServiceStream.getAllEmployees().stream()
                 .filter(e -> e.getDepartmentId() == departmentId)
                 .min(Comparator.comparingInt(e -> e.getSalary()))
                 .orElseThrow(EmployeeNotFoundException::new);
@@ -30,7 +30,7 @@ public class EmployeeDeptServiceImpl implements EmployeeDeptService {
 
     @Override
     public Employee getEmployeeWithMaximumSalaryByDept(int departmentId) {
-        return employeeServiceMaps.getAllEmployees().stream()
+        return employeeServiceStream.getAllEmployees().stream()
                 .filter(e -> e.getDepartmentId() == departmentId)
                 .max(Comparator.comparingInt(Employee::getSalary))
                 .orElseThrow(EmployeeNotFoundException::new);
@@ -38,14 +38,14 @@ public class EmployeeDeptServiceImpl implements EmployeeDeptService {
 
     @Override
     public Collection<Employee> getEmployeesOnlyThisDeptByDept(int departmentId) {
-        return employeeServiceMaps.getAllEmployees().stream()
+        return employeeServiceStream.getAllEmployees().stream()
                 .filter(e -> e.getDepartmentId() == departmentId)
                 .collect(Collectors.toList());
     }
 
     @Override
     public Map<Integer, List<Employee>> getAllEmployeesByDept() {
-        return employeeServiceMaps.getAllEmployees().stream()
+        return employeeServiceStream.getAllEmployees().stream()
                 .collect(Collectors.groupingBy(Employee::getDepartmentId));
     }
 }

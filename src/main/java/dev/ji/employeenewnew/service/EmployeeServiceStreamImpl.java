@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class EmployeeServiceMapsImpl implements EmployeeServiceMaps {
+public class EmployeeServiceStreamImpl implements EmployeeServiceStream {
 
     private Map<String,Employee> employees = new HashMap<>();//мапа сотрудников на основе уникальных идентификаторов
 

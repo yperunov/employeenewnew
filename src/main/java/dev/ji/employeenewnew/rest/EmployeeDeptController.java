@@ -1,7 +1,7 @@
 package dev.ji.employeenewnew.rest;
 
 import dev.ji.employeenewnew.model.Employee;
-import dev.ji.employeenewnew.service.EmployeeDeptService;
+import dev.ji.employeenewnew.service.EmployeeDeptServiceStream;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,10 +15,10 @@ import java.util.Map;
 @RequestMapping("/departments")
 public class EmployeeDeptController {
 
-    private final EmployeeDeptService employeeDeptService;
+    private final EmployeeDeptServiceStream employeeDeptServiceStream;
 
-    public EmployeeDeptController(EmployeeDeptService employeeDeptService) {
-        this.employeeDeptService = employeeDeptService;
+    public EmployeeDeptController(EmployeeDeptServiceStream employeeDeptServiceStream) {
+        this.employeeDeptServiceStream = employeeDeptServiceStream;
     }
 
     @GetMapping("/")
@@ -28,21 +28,21 @@ public class EmployeeDeptController {
 
     @GetMapping(path = "/max-salary")
     public Employee getEmployeeWithMaximumSalaryByDept(@RequestParam int departmentId) {
-        return employeeDeptService.getEmployeeWithMaximumSalaryByDept(departmentId);
+        return employeeDeptServiceStream.getEmployeeWithMaximumSalaryByDept(departmentId);
     }
 
     @GetMapping(path = "/min-salary")
     public Employee getEmployeeWithMaSalaryByDept(@RequestParam int departmentId) {
-        return employeeDeptService.getEmployeeWithMinimalSalaryByDept(departmentId);
+        return employeeDeptServiceStream.getEmployeeWithMinimalSalaryByDept(departmentId);
     }
 
-    @GetMapping(path ="/all", params = "{departmentId}")
-    public Collection<Employee> getEmployeesOnlyThisDeptByDept(@RequestParam int departmentId) {
-        return employeeDeptService.getEmployeesOnlyThisDeptByDept(departmentId);
+    @GetMapping(value ="/all",params = {"departmentId"})
+    public Collection<Employee> getEmployeesOnlyThisDeptByDept(@RequestParam(name="departmentId") int departmentId) {
+        return employeeDeptServiceStream.getEmployeesOnlyThisDeptByDept(departmentId);
     }
 
     @GetMapping("/all")
     public Map<Integer, List<Employee>> getEmployeesOnlyThisDeptByDept() {
-        return employeeDeptService.getAllEmployeesByDept();
+        return employeeDeptServiceStream.getAllEmployeesByDept();
     }
 }

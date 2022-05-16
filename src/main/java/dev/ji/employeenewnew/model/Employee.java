@@ -9,12 +9,12 @@ public class Employee {
     private int salary;
     private int departmentId;
 
-    public Employee(String firstName, String lastName, int departmentId, int salary) {
+    public Employee(String firstName, String lastName, int salary, int departmentId) {
 
         this.firstName = firstName;
         this.lastName = lastName;
-        this.departmentId = departmentId;
         this.salary = salary;
+        this.departmentId = departmentId;
 
     }
 
@@ -57,7 +57,7 @@ public class Employee {
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, departmentId, salary);
+        return Objects.hash(firstName, lastName, salary, departmentId);
     }
 
 
