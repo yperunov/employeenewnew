@@ -1,21 +1,22 @@
 package dev.ji.employeenewnew.rest;
 
 import dev.ji.employeenewnew.model.Employee;
-import dev.ji.employeenewnew.service.EmployeeServiceCollections;
+import dev.ji.employeenewnew.service.EmployeeServiceMaps;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collection;
 import java.util.Set;
 
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
 
-    private EmployeeServiceCollections employeeService;
+    private EmployeeServiceMaps employeeService;
 
-    public EmployeeController(EmployeeServiceCollections employeeService) {
+    public EmployeeController(EmployeeServiceMaps employeeService) {
         this.employeeService = employeeService;
     }
 
@@ -46,7 +47,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/all")
-    public Set<Employee> getAllEmployees() {
+    public Collection<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
     }
 
